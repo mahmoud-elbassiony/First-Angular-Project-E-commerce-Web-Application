@@ -1,0 +1,272 @@
+<div class="container d-flex justify-content-center">
+  <div class="w-50 p-5 border my-5">
+    <h2 class="text-center">Regiseter</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="validationCustom01" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom01"
+          formControlName="name"
+        />
+        <div
+          class="text-danger"
+          *ngIf="registerForm.controls?.['name']?.touched && registerForm.controls?.['name']?.invalid"
+        >
+          Please enter your name.
+        </div>
+      </div>
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="validationCustom02" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="validationCustom02"
+          name="email"
+          formControlName="email"
+        />
+        <div
+          *ngIf="registerForm.controls?.['email']?.touched && registerForm.controls?.['email']?.invalid"
+          class="text-danger"
+        >
+          <p *ngIf="registerForm.controls?.['email']?.errors?.['required']">
+            Please enter a valid email address
+          </p>
+          <p *ngIf="registerForm.controls?.['email']?.errors?.['email']">
+            Email is not valid
+          </p>
+        </div>
+      </div>
+      <!-- UserName -->
+      <div class="mb-3">
+        <label for="validationCustom03" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationCustom03"
+          name="username"
+          formControlName="userName"
+        />
+        <div
+          class="text-danger"
+          *ngIf="registerForm.controls?.['userName']?.touched && registerForm.controls?.['userName']?.invalid"
+        >
+          <p *ngIf="registerForm.controls?.['userName']?.errors?.['required'] ">
+            Please enter an username.
+          </p>
+          <p *ngIf="registerForm.controls?.['userName']?.errors?.['pattern'] ">
+            Username must contain no spaces and at least be 4 characters
+          </p>
+        </div>
+      </div>
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="password"
+          formControlName="password"
+        />
+        <div
+          class="text-danger"
+          *ngIf="registerForm.controls?.['password']?.touched && registerForm.controls?.['password']?.invalid"
+        >
+          <p *ngIf="registerForm.controls?.['password']?.errors?.['required'] ">
+            Please enter a password.
+          </p>
+          <p *ngIf="registerForm.controls?.['password']?.errors?.['pattern'] ">
+            password length not less than 8 characters , contains at least one
+            lowercase , one uppercase , at least one digit and special character
+          </p>
+        </div>
+      </div>
+      <!-- confirm Pass -->
+      <div class="mb-3">
+        <label for="exampleInputPassword2" class="form-label"
+          >Confirm Password</label
+        >
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword2"
+          name="password"
+          formControlName="confirmPass"
+        />
+        <div
+          class="text-danger"
+          *ngIf="registerForm.controls?.['confirmPass']?.touched && registerForm.controls?.['confirmPass']?.invalid"
+        >
+          <p
+            *ngIf="registerForm.controls?.['confirmPass']?.errors?.['required'] "
+          >
+            Please enter the password again.
+          </p>
+          <p
+            *ngIf="registerForm.controls?.['confirmPass']?.errors?.['matching'] && registerForm.controls?.['confirmPass']?.value  !== ''"
+          >
+            password doesn't match
+          </p>
+        </div>
+      </div>
+      <!--  -->
+      <div formArrayName="addresses">
+        <div
+          [formGroupName]="i"
+          class="d-flex gap-3 align-items-center justify-content-between"
+          *ngFor="let address of addresses.controls; let i = index"
+        >
+          <div class="flex-grow-1">
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                name="address"
+                formControlName="address"
+              />
+              <div
+                *ngIf="
+                  addresses.controls[i].get('address')?.invalid &&
+                  addresses.controls[i].get('address')?.touched
+                "
+              >
+                <p
+                  class="text-danger"
+                  *ngIf="
+                addresses.controls[i].get('address')?.errors?.['required']"
+                >
+                  This field is required
+                </p>
+                <p
+                  class="text-danger"
+                  *ngIf="
+                addresses.controls[i].get('address')?.errors?.['pattern']"
+                >
+                  Invalid
+                </p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="street" class="form-label">Street</label>
+              <input
+                type="text"
+                class="form-control"
+                id="street"
+                name="street"
+                formControlName="street"
+              />
+              <div
+                *ngIf="
+                  addresses.controls[i].get('street')?.invalid &&
+                  addresses.controls[i].get('street')?.touched
+                "
+              >
+                <p
+                  class="text-danger"
+                  *ngIf="
+                addresses.controls[i].get('street')?.errors?.['required']"
+                >
+                  This field is required
+                </p>
+                <p
+                  class="text-danger"
+                  *ngIf="
+                addresses.controls[i].get('street')?.errors?.['pattern']"
+                >
+                  Invalid
+                </p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="city" class="form-label">City</label>
+              <input
+                type="text"
+                class="form-control"
+                id="city"
+                name="city"
+                formControlName="city"
+              />
+              <div
+                *ngIf="
+                  addresses.controls[i].get('city')?.invalid &&
+                  addresses.controls[i].get('city')?.touched
+                "
+              >
+                <p
+                  *ngIf="addresses.controls[i].get('city')?.errors?.['required']"
+                  class="text-danger"
+                >
+                  This field is required
+                </p>
+                <p
+                  *ngIf="addresses.controls[i].get('city')?.errors?.['pattern']"
+                  class="text-danger"
+                >
+                  city must contain letters only
+                </p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="country" class="form-label">Country</label>
+              <input
+                type="text"
+                class="form-control"
+                id="country"
+                name="country"
+                formControlName="country"
+              />
+              <div
+                *ngIf="
+                  addresses.controls[i].get('country')?.invalid &&
+                  addresses.controls[i].get('country')?.touched
+                "
+              >
+                <p
+                  *ngIf="addresses.controls[i].get('country')?.errors?.['required']"
+                  class="text-danger"
+                >
+                  This field is required
+                </p>
+                <p
+                  *ngIf="addresses.controls[i].get('country')?.errors?.['pattern']"
+                  class="text-danger"
+                >
+                  country must contain letters only
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="btn btn-outline-danger"
+            style="height: fit-content"
+            (click)="removeAddress(i)"
+          >
+            <fa-icon [icon]="trachIcon"></fa-icon>
+          </button>
+        </div>
+        <button class="btn btn-outline-secondary" (click)="addAddress()">
+          Add new address
+        </button>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary mt-3 w-100"
+        [disabled]="registerForm.invalid"
+      >
+        Register
+      </button>
+    </form>
+    <div class="mt-3">
+      <span>Already have an account?</span>
+      <a [routerLink]="['../login']"> Login</a>
+    </div>
+  </div>
+</div>

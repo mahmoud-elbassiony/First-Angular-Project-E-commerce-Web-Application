@@ -1,0 +1,51 @@
+<div class="container d-flex justify-content-center">
+  <div class="w-50 p-5 my-5 border">
+    <h2 class="text-center">Login</h2>
+    <form #loginForm="ngForm" (ngSubmit)="handleSubmit(loginForm)">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          ngModel
+          name="email"
+          #name="ngModel"
+          required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        />
+        <div *ngIf="name.touched && name.invalid" class="text-danger">
+          <p *ngIf="name.errors?.['required']">This field is required</p>
+          <p *ngIf="name.errors?.['pattern']">Email is invalid</p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          name="password"
+          ngModel
+          #password="ngModel"
+          required
+        />
+        <p *ngIf="password.touched && password.invalid" class="text-danger">
+          This field is required
+        </p>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+    </form>
+    <div class="mt-3">
+      <span>Don't have an account? </span>
+      <a [routerLink]="['../register']">Register</a>
+    </div>
+  </div>
+</div>

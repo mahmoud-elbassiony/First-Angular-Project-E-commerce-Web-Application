@@ -1,0 +1,29 @@
+.product {
+  gap: 40px;
+}
+.product__images,
+.product__details {
+  width: calc(50% - 20px);
+}
+.product__images div {
+  gap: 10px;
+  margin-top: 20px;
+}
+.product__main-img {
+  height: 300px;
+}
+.product__images div {
+  height: 20%;
+  max-height: 100px;
+}
+.product__images div button {
+  width: calc(25% - 7.5px);
+  height: 100%;
+  padding: 0;
+  overflow: auto;
+  border: 1px solid gray;
+}
+
+.product__images div button img {
+  height: 100%;
+}

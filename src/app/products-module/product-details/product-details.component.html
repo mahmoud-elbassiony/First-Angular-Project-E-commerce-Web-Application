@@ -1,0 +1,59 @@
+<div class="product-details py-5">
+  <div class="container">
+    <div class="d-flex product">
+      <div class="product__images">
+        <img class="product__main-img" [src]="imgSrc" alt="" />
+        <div class="d-flex">
+          <button
+            (click)="changeImg(i)"
+            *ngFor="let img of productDetails?.images; let i = index"
+          >
+            <img [src]="img" alt="" />
+          </button>
+        </div>
+      </div>
+      <div class="product__details">
+        <h2 class="h4 fw-bold">{{ productDetails && productDetails.title }}</h2>
+        <a href="" class="text-secondary"
+          >({{ productDetails && productDetails.brand }})</a
+        >
+        <div class="rating-container position-relative">
+          <span class="fs-4 rating">★★★★★</span>
+          <span
+            class="fs-4 rating rating-bg position-absolute"
+            [style.width.%]="productDetails && productDetails.rating * 20"
+            >★★★★★</span
+          >
+        </div>
+        <p class="mt-4">{{ productDetails && productDetails.description }}</p>
+        <h4>
+          {{
+            productDetails && productDetails.price
+              | discount : productDetails && productDetails.discountPercentage
+              | currency : "USD" : "symbol" : "2.2-2"
+          }}
+          <span
+            class=""
+            [ngClass]="{
+              'text-decoration-line-through text-secondary fs-6':
+                productDetails && productDetails.discountPercentage
+            }"
+          >
+            {{ productDetails && productDetails.price | currency }}</span
+          >
+        </h4>
+        <button
+          (click)="addToCartF(productDetails)"
+          class="btn btn-primary rounded-pill mt-4 px-5"
+          [ngClass]="{
+            'btn-secondary': productDetails && productDetails.stock == 0
+          }"
+        >
+          {{
+            productDetails && productDetails.stock ? "Add To Cart" : "Notify Me"
+          }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+a {
+  text-decoration: none !important;
+}
+img {
+  width: 100%;
+  display: block;
+}
+.rating {
+  font-style: normal;
+  display: inline-block;
+  color: #cccccc;
+}
+.rating-container {
+  width: fit-content;
+}
+.rating-bg {
+  color: rgb(41, 158, 51);
+  overflow: hidden;
+  display: flex;
+  top: 0;
+}
