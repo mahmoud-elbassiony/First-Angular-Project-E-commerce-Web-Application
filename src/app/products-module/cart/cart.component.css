@@ -6,3 +6,16 @@ table td,
 th {
   border: none !important;
 }
+button.plus {
+  background-color: #289f8e;
+  color: white;
+}
+button.plus:hover {
+  background-color: #1f8f7e;
+}
+button.minus {
+  background-color: #ddd;
+}
+button.minus:hover {
+  background-color: #cacaca;
+}

@@ -51,7 +51,10 @@ export class CartProdcutsService {
     let total = 0;
     for (let product of this.cartProducts.value) {
       if (product.quantity) {
-        total += product.price * product.quantity;
+        total +=
+          product.price *
+          (1 - product.discountPercentage / 100) *
+          product.quantity;
       }
     }
     console.log(total);

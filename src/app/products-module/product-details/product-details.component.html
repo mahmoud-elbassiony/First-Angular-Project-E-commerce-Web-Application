@@ -1,4 +1,7 @@
-<div class="product-details py-5">
+<div
+  *ngIf="(spinnerService.visibility | async) === false"
+  class="product-details py-5"
+>
   <div class="container">
     <div class="d-flex product">
       <div class="product__images">
@@ -43,8 +46,9 @@
           >
         </h4>
         <button
+          style="border-radius: 0"
           (click)="addToCartF(productDetails)"
-          class="btn btn-primary rounded-pill mt-4 px-5"
+          class="btn btn-primary mt-4 px-5"
           [ngClass]="{
             'btn-secondary': productDetails && productDetails.stock == 0
           }"

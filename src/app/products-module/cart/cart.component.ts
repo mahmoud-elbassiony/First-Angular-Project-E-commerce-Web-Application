@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { CartProdcutsService } from '../services/cart-prodcuts.service';
 import { Product } from '../interfacs/product';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cart',
@@ -8,6 +11,9 @@ import { Product } from '../interfacs/product';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent {
+  faPlus: any = faPlus;
+  faMinus: any = faMinus;
+  faXmark: any = faXmark;
   cartProducts!: Product[];
   total: number = 0;
   constructor(private cartProductsService: CartProdcutsService) {}

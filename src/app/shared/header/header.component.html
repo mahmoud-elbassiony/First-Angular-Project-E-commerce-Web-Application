@@ -1,9 +1,12 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav
+  class="navbar navbar-expand-lg bg-dark border-bottom border-body"
+  data-bs-theme="dark"
+>
   <div class="container">
     <a
-      class="navbar-brand"
+      class="navbar-brand text-white"
       routerLink=""
-      routerLinkActive="text-primary"
+      routerLinkActive="text-white"
       [routerLinkActiveOptions]="{ exact: true }"
       >Products App</a
     >
@@ -26,16 +29,17 @@
               class="nav-link"
               aria-current="page"
               routerLink="register"
-              routerLinkActive="text-primary"
+              routerLinkActive="text-white"
               >Register</a
             >
           </li>
+
           <li class="nav-item">
             <a
               class="nav-link"
               aria-current="page"
               routerLink="login"
-              routerLinkActive="text-primary"
+              routerLinkActive="text-white"
               >Login</a
             >
           </li>
@@ -46,32 +50,49 @@
               class="nav-link"
               aria-current="page"
               routerLink="profile"
-              routerLinkActive="text-primary"
+              routerLinkActive="text-white"
               >Profile</a
             >
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a
               class="nav-link"
               aria-current="page"
               routerLink="cart"
-              routerLinkActive="text-primary"
+              routerLinkActive="text-white"
             >
               <fa-icon [icon]="cartIcon"></fa-icon>
               <span> {{ cartCounter ? cartCounter : "" }}</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a
               class="nav-link"
               style="cursor: pointer"
               aria-current="page"
               (click)="logOut()"
-              routerLinkActive="text-primary"
-              >LogOut</a
+              routerLinkActive="text-white"
+              >Logout</a
             >
           </li>
         </ng-container>
+        <li class="nav-item">
+          <a
+            class="nav-link position-relative"
+            aria-current="page"
+            routerLink="cart"
+            routerLinkActive="text-white"
+          >
+            <fa-icon style="font-size: 18px" [icon]="cartIcon"></fa-icon>
+
+            <span
+              *ngIf="cartCounter"
+              class="cart-counter d-flex justify-content-center align-items-center text-white position-absolute top-0 end-0"
+            >
+              {{ cartCounter }}</span
+            >
+          </a>
+        </li>
       </ul>
     </div>
   </div>

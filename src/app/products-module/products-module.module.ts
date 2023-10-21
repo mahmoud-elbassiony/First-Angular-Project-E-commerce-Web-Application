@@ -10,6 +10,7 @@ import { ProductComponent } from './product/product.component';
 
 // Pipes
 import { DiscountPipe } from './pipes/discount/discount.pipe';
+import { BannerComponent } from './banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { DiscountPipe } from './pipes/discount/discount.pipe';
     ProductDetailsComponent,
     ProductComponent,
     DiscountPipe,
+    BannerComponent,
   ],
   imports: [CommonModule, SharedModule, RouterLink],
   exports: [

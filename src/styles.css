@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+/* .text-bg-blue {
+  background-color: #0792e3e0 ;
+} */
 
 a {
   text-decoration: none !important;
@@ -16,7 +19,7 @@ img {
   width: fit-content;
 }
 .rating-bg {
-  color: rgb(41, 158, 51);
+  color: #ffdf00;
   overflow: hidden;
   display: flex;
   top: 0;

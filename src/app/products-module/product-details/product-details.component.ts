@@ -4,6 +4,7 @@ import { Product } from '../interfacs/product';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
 import { CartProdcutsService } from '../services/cart-prodcuts.service';
+import { SpinnerServiceService } from 'src/app/shared/spinner-service.service';
 
 @Component({
   selector: 'app-product-details',
@@ -27,7 +28,8 @@ export class ProductDetailsComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductsService,
-    private cartProductsService: CartProdcutsService
+    private cartProductsService: CartProdcutsService,
+    public spinnerService: SpinnerServiceService
   ) {
     console.log(this.productDetails);
   }

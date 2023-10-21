@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { matchValidator } from 'src/app/matchPassword';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { LoggedInService } from 'src/app/shared/services/logged-in.service';
 
 @Component({
   selector: 'app-register',
@@ -39,7 +40,7 @@ export class RegisterComponent {
     return addressForm;
   }
 
-  constructor() {
+  constructor(private loggedInService: LoggedInService) {
     this.registerForm = new FormGroup({
       name: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -61,6 +62,7 @@ export class RegisterComponent {
   }
 
   handleSubmit() {
+    this.loggedInService.setLoggedIn(true);
     console.log(this.registerForm);
   }
   get addresses(): FormArray {

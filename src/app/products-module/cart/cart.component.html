@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-5">
   <div *ngIf="cartProducts.length > 0; else empty">
     <table class="table">
       <thead>
@@ -27,27 +27,18 @@
           </td>
           <td class="col-3">
             <div>
-              <button
-                class="btn btn-outline-success"
-                (click)="increase(product)"
-              >
-                +
+              <button class="btn plus" (click)="increase(product)">
+                <fa-icon [icon]="faPlus"></fa-icon>
               </button>
-              <span class="mx-2">{{ product.quantity }}</span>
-              <button
-                class="btn btn-outline-secondary"
-                (click)="decrease(product)"
-              >
-                -
+              <span class="mx-3">{{ product.quantity }}</span>
+              <button class="btn minus" (click)="decrease(product)">
+                <fa-icon [icon]="faMinus"></fa-icon>
               </button>
             </div>
           </td>
           <td class="col-2">
-            <button
-              class="btn btn-outline-danger"
-              (click)="removeProduct(product)"
-            >
-              x
+            <button class="btn btn-danger" (click)="removeProduct(product)">
+              <fa-icon [icon]="faXmark"></fa-icon>
             </button>
           </td>
           <td class="col-2">
@@ -58,13 +49,20 @@
             }}
           </td>
         </tr>
+        <tr class="row d-flex align-items-center">
+          <td class="col-2"></td>
+          <td class="col-3"></td>
+          <td class="col-3"></td>
+          <td class="col-2"></td>
+          <td class="col-2">
+            <div>
+              <span class="me-2">Total:</span>
+              <span>{{ total | currency : "USD" }}</span>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
-
-    <div>
-      <span class="me-2">Total:</span>
-      <span>{{ total | currency : "USD" }}</span>
-    </div>
   </div>
 
   <ng-template #empty>
