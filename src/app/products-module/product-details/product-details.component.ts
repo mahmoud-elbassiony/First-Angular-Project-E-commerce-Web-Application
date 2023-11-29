@@ -14,25 +14,12 @@ import { SpinnerServiceService } from 'src/app/shared/spinner-service.service';
 export class ProductDetailsComponent {
   productDetails!: Product;
 
-  // constructor(private activatedRoute: ActivatedRoute) {
-  //   this.productslist = products;
-  // }
-
-  // ngOnInit() {
-  //   this.productDetails = this.productslist.find(
-  //     (product) => product.id == this.activatedRoute.snapshot.params['id']
-  //   );
-  //   this.imgSrc = this.productDetails.images[0];
-  // }
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductsService,
     private cartProductsService: CartProdcutsService,
     public spinnerService: SpinnerServiceService
-  ) {
-    console.log(this.productDetails);
-  }
+  ) {}
 
   imgSrc!: string;
 
@@ -42,7 +29,6 @@ export class ProductDetailsComponent {
       .subscribe(
         (data) => {
           this.productDetails = data;
-          console.log(this.productDetails);
           this.imgSrc = this.productDetails.images[0];
         },
         (error) => alert(`${error.status}, ${error.message}`)

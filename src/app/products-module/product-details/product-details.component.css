@@ -5,18 +5,21 @@
 .product__details {
   width: calc(50% - 20px);
 }
-.product__images div {
+.product__images .thumbnail {
   gap: 10px;
   margin-top: 20px;
 }
 .product__main-img {
   height: 300px;
+  width: auto;
+  max-width: 100%;
+  margin: auto;
 }
-.product__images div {
+.product__images .thumbnail {
   height: 20%;
   max-height: 100px;
 }
-.product__images div button {
+.product__images .thumbnail button {
   width: calc(25% - 7.5px);
   height: 100%;
   padding: 0;
@@ -24,6 +27,6 @@
   border: 1px solid gray;
 }
 
-.product__images div button img {
+.product__images .thumbnail button img {
   height: 100%;
 }

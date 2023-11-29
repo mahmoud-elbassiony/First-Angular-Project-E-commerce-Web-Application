@@ -17,7 +17,7 @@ export class ProductComponent {
     private cartProductsService: CartProdcutsService
   ) {}
 
-  redirectToDetails(e: any, btn: any, id: any) {
+  redirectToDetails(e: Event, btn: HTMLButtonElement, id: number) {
     if (e.target != btn) {
       this.router.navigate(['product-details', id]);
     }
@@ -29,7 +29,10 @@ export class ProductComponent {
       .subscribe((data) => (this.cartProducts = data));
   }
 
-  addToCartF(product: Product) {
+  addToCartF(product: Product, btn: HTMLButtonElement) {
     this.cartProductsService.setcartProducts(product);
+    btn.textContent = 'Added To Cart';
+    btn.style.backgroundColor = 'rgb(26, 174, 201)';
+    btn.style.border = 'rgb(26, 174, 201)';
   }
 }

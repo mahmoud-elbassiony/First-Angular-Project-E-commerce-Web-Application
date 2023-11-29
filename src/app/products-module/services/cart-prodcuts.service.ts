@@ -8,6 +8,7 @@ import { Product } from '../interfacs/product';
 export class CartProdcutsService {
   private cartProducts = new BehaviorSubject<Product[]>([]);
   constructor() {}
+
   getcartProducts() {
     return this.cartProducts.asObservable();
   }
@@ -35,7 +36,6 @@ export class CartProdcutsService {
     };
 
     this.cartProducts.next(this.cartProducts.value);
-    console.log(this.cartProducts.value);
   }
 
   removeProduct(product: Product) {

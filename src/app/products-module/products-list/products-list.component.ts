@@ -10,28 +10,18 @@ import { CartProdcutsService } from '../services/cart-prodcuts.service';
   styleUrls: ['./products-list.component.css'],
 })
 export class ProductsListComponent {
-  // productsList: Array<Product> = products;
-  productsData!: any;
+  // productsData!: {products: Array<Product>};
   productsList!: Array<Product>;
-  cartProducts!: Product[];
 
-  constructor(
-    private productsService: ProductsService,
-    private cartProductsService: CartProdcutsService
-  ) {}
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
     this.productsService.getProductsList().subscribe(
-      (data) => {
-        this.productsData = data;
-        this.productsList = this.productsData.products;
+      (data: { products: Array<Product> } | any) => {
+        this.productsList = data.products;
       },
 
       (error) => alert(`${error.status}, ${error.message}`)
     );
-
-    this.cartProductsService
-      .getcartProducts()
-      .subscribe((data) => (this.cartProducts = data));
   }
 }

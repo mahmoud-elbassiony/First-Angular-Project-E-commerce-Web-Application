@@ -25,8 +25,8 @@ export class HeaderComponent {
       .subscribe(
         () => (this.cartCounter = this.cartCounterService.getcartCount())
       );
-    // this.loggedInService.getLoggIn().subscribe(data => this.IsLoggedIn)
   }
+
   logOut() {
     this.route.navigate(['../login']);
     this.loggedInService.setLoggedIn(false);

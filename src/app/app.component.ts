@@ -9,18 +9,10 @@ import { OnInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
 })
 export class AppComponent implements AfterContentChecked {
   title = 'AngularApp';
-  // shouldShowSpinner!: boolean;
   constructor(
     public spinnerService: SpinnerServiceService,
     private changeDetector: ChangeDetectorRef
   ) {}
-
-  // ngOnInit() {
-  //   this.spinnerService.getVisibilityState().subscribe((data) => {
-  //     this.shouldShowSpinner = data;
-  //     console.log(this.shouldShowSpinner);
-  //   });
-  // }
 
   ngAfterContentChecked(): void {
     this.changeDetector.detectChanges();

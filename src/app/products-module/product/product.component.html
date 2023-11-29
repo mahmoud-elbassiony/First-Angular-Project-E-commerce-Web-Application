@@ -1,69 +1,73 @@
-<div (click)="redirectToDetails($event, addToCart, productItem.id)">
-  <div class="card cursor-pointer">
-    <div class="card__img position-relative p-4 pb-0">
-      <img [src]="productItem.images[0]" class="card-img-top" alt="..." />
+<div
+  class="card cursor-pointer d-flex flex-column h-100"
+  (click)="redirectToDetails($event, addToCart, productItem.id)"
+>
+  <div
+    class="card__img position-relative p-4 pb-0 d-flex align-items-center justify-content-center"
+    style="height: 42%"
+  >
+    <img [src]="productItem.images[0]" class="card-img-top" alt="..." />
+    <span
+      class="badge position-absolute top-0 start-0 m-2"
+      [ngClass]="{
+        'text-bg-primary': productItem.stock > 0,
+        'text-bg-danger': productItem.stock == 0
+      }"
+      >{{ productItem.stock > 0 ? "In stock" : "Out of stock" }}</span
+    >
+  </div>
+
+  <div class="card-body" style="height: 58%">
+    <h5 class="card-title fs-6 fw-bold" style="height: 38.4px">
+      {{ productItem.title }}
+    </h5>
+    <h6 class="fw-bold">
+      <span>{{
+        productItem.price
+          | discount : productItem.discountPercentage
+          | currency : "USD" : "symbol" : "2.2-2"
+      }}</span>
       <span
-        class="badge position-absolute top-0 start-0 m-2"
         [ngClass]="{
-          'text-bg-primary': productItem.stock > 0,
-          'text-bg-danger': productItem.stock == 0
+          'text-secondary text-decoration-line-through fw-normal ms-2':
+            productItem.discountPercentage
         }"
-        >{{ productItem.stock > 0 ? "In stock" : "Out of stock" }}</span
+      >
+        {{ productItem.price | currency : "USD" : "symbol" : "2.2-2" }}</span
+      >
+    </h6>
+
+    <div class="rating-container position-relative">
+      <span class="fs-4 rating">★★★★★</span>
+      <span
+        class="fs-4 rating rating-bg position-absolute"
+        [style.width.%]="productItem.rating * 20"
+        >★★★★★</span
       >
     </div>
-
-    <div class="card-body">
-      <h5 class="card-title fs-6 fw-bold" style="height: 38.4px">
-        {{ productItem.title }}
-      </h5>
-      <h6 class="fw-bold">
-        <span>{{
-          productItem.price
-            | discount : productItem.discountPercentage
-            | currency : "USD" : "symbol" : "2.2-2"
-        }}</span>
-        <span
-          [ngClass]="{
-            'text-secondary text-decoration-line-through fw-normal ms-2':
-              productItem.discountPercentage
-          }"
-        >
-          {{ productItem.price | currency : "USD" : "symbol" : "2.2-2" }}</span
-        >
-      </h6>
-
-      <div class="rating-container position-relative">
-        <span class="fs-4 rating">★★★★★</span>
-        <span
-          class="fs-4 rating rating-bg position-absolute"
-          [style.width.%]="productItem.rating * 20"
-          >★★★★★</span
-        >
-      </div>
-      <p
-        class="card-text"
-        style="
-          font-size: 14px;
-          height: 21px;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        "
-      >
-        {{ productItem.description }}
-        <!-- {{ productItem.description | description }} -->
-      </p>
-      <button
-        #addToCart
-        style="border-radius: 0"
-        class="btn btn-primary w-100"
-        [ngClass]="{
-          'btn-secondary': productItem.stock == 0
-        }"
-        (click)="addToCartF(productItem)"
-      >
-        {{ productItem.stock ? "Add To Cart" : "Notify Me" }}
-      </button>
-    </div>
+    <p
+      class="card-text"
+      style="
+        font-size: 14px;
+        height: 21px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      "
+    >
+      {{ productItem.description }}
+      <!-- {{ productItem.description | description }} -->
+    </p>
+    <button
+      #addToCart
+      style="border-radius: 0"
+      class="btn btn-primary w-100"
+      [ngClass]="{
+        'btn-secondary': productItem.stock == 0
+      }"
+      (click)="addToCartF(productItem, addToCart)"
+    >
+      {{ productItem.stock ? "Add To Cart" : "Notify Me" }}
+    </button>
   </div>
 </div>
