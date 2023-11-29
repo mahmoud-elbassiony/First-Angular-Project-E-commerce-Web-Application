@@ -1,3 +1,12 @@
+# A simple E-commerce web application
+key features:
+- Implemented services for Authentication, loading & cart Items.
+- Utilized an Interceptor to update the loading state with each API request.
+- Created a custom pipe to handle price calculations after applying discounts.
+- Implemented an Auth-guard for the cart page, ensuring only authenticated users can access it.
+- Designed a Template-driven form for the login page.
+- Designed a Reactive form for the register page, incorporating a form array for addresses.
+
 # AngularApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
@@ -25,3 +34,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Demo Link: https://e-commerce-web-application-angular.vercel.app/
