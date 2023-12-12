@@ -1,6 +1,13 @@
-<app-banner></app-banner>
-<div class="py-5">
-  <div class="container">
+<div
+  style="padding-top: 50px"
+  *ngIf="spinnerService.visibility | async; else data"
+>
+  <app-spinner></app-spinner>
+</div>
+
+<ng-template #data>
+  <div class="container py-5">
+    <h2 class="mb-4 h3">Featured Products</h2>
     <div
       class="row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5"
     >
@@ -13,4 +20,4 @@
       </div>
     </div>
   </div>
-</div>
+</ng-template>
