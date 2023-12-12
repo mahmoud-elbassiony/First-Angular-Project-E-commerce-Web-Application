@@ -1,7 +1,25 @@
+.navbar {
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: 1px 1px 5px 0 #eee;
+}
+.navbar a {
+  color: #474747;
+  font-weight: 500;
+  line-height: 1;
+  transition: all 0.2s ease-in-out;
+  border-color: transparent;
+}
+.navbar .active-link,
+.navbar a:hover {
+  color: #1e8172;
+  /* border-bottom: 2px solid rgb(49, 49, 49); */
+}
 .cart-counter {
-  width: 20px;
-  height: 20px;
-
+  width: 1.125rem;
+  height: 1.125rem;
   background-color: #289f8e;
   border-radius: 50%;
+  font-size: 0.875rem;
+  margin: -0.25rem;
 }

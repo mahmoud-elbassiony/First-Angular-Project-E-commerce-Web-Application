@@ -55,8 +55,7 @@
         text-overflow: ellipsis;
       "
     >
-      {{ productItem.description }}
-      <!-- {{ productItem.description | description }} -->
+      {{ productItem.description || "" }}
     </p>
     <button
       #addToCart

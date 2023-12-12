@@ -1,3 +1,7 @@
+<div style="padding-top: 50px" *ngIf="spinnerService.visibility | async">
+  <app-spinner></app-spinner>
+</div>
+
 <div
   *ngIf="(spinnerService.visibility | async) === false"
   class="product-details py-5"

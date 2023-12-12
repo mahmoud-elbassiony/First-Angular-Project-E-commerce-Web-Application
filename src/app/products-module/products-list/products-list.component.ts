@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Product } from '../interfacs/product';
 import { ProductsService } from '../services/products.service';
 import { CartProdcutsService } from '../services/cart-prodcuts.service';
+import { SpinnerServiceService } from 'src/app/shared/spinner-service.service';
 
 @Component({
   selector: 'app-products-list',
@@ -13,7 +14,10 @@ export class ProductsListComponent {
   // productsData!: {products: Array<Product>};
   productsList!: Array<Product>;
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    public spinnerService: SpinnerServiceService
+  ) {}
 
   ngOnInit() {
     this.productsService.getProductsList().subscribe(

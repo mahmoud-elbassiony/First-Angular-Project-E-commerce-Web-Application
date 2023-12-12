@@ -1,0 +1,21 @@
+.hero-section {
+  background-image: url("../../../assets/imgs/landing.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  position: relative;
+}
+.hero-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 10%;
+}
+.hero-content h1 {
+  font-weight: 700;
+}
+.hero-content button {
+  font-size: 1.25rem;
+  font-weight: 500;
+  background-color: #1f5264;
+  color: #fff;
+}

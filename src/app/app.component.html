@@ -1,3 +1,5 @@
 <app-header></app-header>
-<app-spinner *ngIf="spinnerService.visibility | async"></app-spinner>
-<div><router-outlet></router-outlet></div>
+<!-- <app-spinner
+  *ngIf="(spinnerService.visibility | async) === false"
+></app-spinner> -->
+<router-outlet></router-outlet>
